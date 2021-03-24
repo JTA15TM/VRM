@@ -53,12 +53,16 @@ function _d(app_version, key){
     if(request.status == 200){
         let response = JSON.parse(request.responseText);
         let version = response.version;
-        if(version != undefined){
-            if(version == app_version){
-                _e(2);
+        let _k = response.key;
+        if(version != undefined && _k != undefined){
+            if(key != _k){
+                _e(3);
             }else{
-                let uri = window.location.href;
-                window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/version.json";
+                if(version == app_version) _e(2);
+                else{
+                    let uri = window.location.href;
+                    window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/version.json";
+                }
             }
         }else _e(3);
     }
