@@ -9,7 +9,7 @@ function _q(){
                     for(let i = 0; i < p.length; i++){
                         let a = p[i].split('=').length;
                         if(a != 2) {
-                            _e();
+                            _e(1);
                             break;
                         }
                         else f = 1;
@@ -31,17 +31,18 @@ function _q(){
                         if(app_version != undefined && key != undefined){
                             _d(app_version, key);
                         }
-                        else _e();
+                        else _e(1);
                     }
                 }
-                else _e();
+                else _e(1);
             }
-            else _e();
+            else _e(1);
 }
 
-function _e(){
+function _e(code){
     let uri = window.location.href;
-    window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/error.json";
+    let _code = code;
+    window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/error" + (_code > 1 ? code : "") + ".json";
 }
 
 function _d(app_version, key){
@@ -49,6 +50,17 @@ function _d(app_version, key){
     request.open('GET', "version.json", false);
     request.send(null);
 
-    alert(request.status);
-    alert(request.responseText);
+    if(request.status == 200){
+        let response = JSON.parse(request.responseText);
+        let version = response.version;
+        if(version != undefined){
+            if(version == app_version){
+                _e(2);
+            }else{
+                let uri = window.location.href;
+                window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/version.json";
+            }
+        }else _e(3);
+    }
+    else _e(3);
 }
