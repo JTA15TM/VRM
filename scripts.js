@@ -1,3 +1,6 @@
+
+//file:///C:/Users/JTA%20Team/Documents/GitHub/VRM/version.htm?app_version=1.4-beta(closing)&key=2136qefgweg462yg34g254h
+
 function _q(){
     let url = window.location.href;
             let q = url.split('?');
@@ -9,7 +12,7 @@ function _q(){
                     for(let i = 0; i < p.length; i++){
                         let a = p[i].split('=').length;
                         if(a != 2) {
-                            _e(1);
+                            _e();
                             break;
                         }
                         else f = 1;
@@ -31,18 +34,22 @@ function _q(){
                         if(app_version != undefined && key != undefined){
                             _d(app_version, key);
                         }
-                        else _e(1);
+                        else _e();
                     }
                 }
-                else _e(1);
+                else _e();
             }
-            else _e(1);
+            else _e();
 }
 
-function _e(code){
+function _e(){
     let uri = window.location.href;
-    let _code = code;
-    window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/error" + (_code > 1 ? code : "") + ".json";
+    window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/error.htm";
+}
+
+function _e_a(){
+    let uri = window.location.href;
+    window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/error_actual.htm";
 }
 
 function _d(app_version, key){
@@ -58,13 +65,27 @@ function _d(app_version, key){
             if(key != _k){
                 _e(3);
             }else{
-                if(version == app_version) _e(2);
-                else{
-                    let uri = window.location.href;
-                    window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/version.json";
-                }
+                if(version == app_version) _e_a();
+                else main(version);
             }
-        }else _e(3);
+        }else _e();
     }
-    else _e(3);
+    else _e();
+}
+
+
+function main(version){
+    root = document.getElementById("root");
+
+    let html = "<div id=\"root_center\">"
+            + "<div id=\"root_title\">Доступна новая версия</div><div>"
+            + "<div id=\"version_data\" class=\"version_data_label\">Версия:</div>"
+            + "<div id=\"version_data\" class=\"version_data_info\">" + version + "</div></div>"
+            + "<p id=\"button_download\" onclick=\"download('" + version + "');\">Скачать</p></div>";
+    root.innerHTML = html;
+}
+
+function download(version){
+    let uri = window.location.href;
+    window.location.href = uri.substring(0, uri.lastIndexOf('/')) + "/files/" + version + ".apk";
 }

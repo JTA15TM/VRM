@@ -1,0 +1,76 @@
+body{
+    font-family: "GoogleFont";
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'GoogleFont';
+    src: url('fonts/sans_medium.ttf'); 
+}
+
+#root{
+    padding: 10px;
+}
+
+#toolbar{
+    background-color: #436A97;
+    box-shadow: 0 0 15px gray;
+    color: #FFFFFF;
+    padding: 10px;
+}
+
+#toolbar_item{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.toolbar_title{
+    margin-left: 10px;
+}
+
+#button_download{
+    background-color: #436A97;
+    color: #FFFFFF;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px gray;
+    border-radius: 7px;
+    transition: 0.3s;
+}
+
+#button_download:hover{
+    background-color: #324F70;
+    cursor: pointer;
+}
+
+#root_center{
+    display: block;
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    bottom: 30%;
+    left: 10%;
+    margin: auto;
+    text-align: center;
+}
+
+#version_data{
+    font-size: larger;
+    display: inline-block;
+}
+
+.version_data_label{
+    color: #000000;
+}
+
+.version_data_info{
+    color: #4e4e4e;
+}
+
+#root_title{
+    font-size: xx-large;
+     margin-bottom: 15px;
+}
