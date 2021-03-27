@@ -78,6 +78,7 @@ function main(version){
     root = document.getElementById("root");
 
     let html = "<div id=\"root_center\">"
+            + "<div id=\"root_title\"><img src=\"images/refresh-button.png\"/></div><div>"
             + "<div id=\"root_title\">Доступна новая версия</div><div>"
             + "<div id=\"version_data\" class=\"version_data_label\">Версия:</div>"
             + "<div id=\"version_data\" class=\"version_data_info\">" + version + "</div></div>"
