@@ -1,6 +1,3 @@
-
-//file:///C:/Users/JTA%20Team/Documents/GitHub/VRM/version.htm?app_version=1.4-beta(closing)&key=2136qefgweg462yg34g254h
-
 function _q(){
     let url = window.location.href;
             let q = url.split('?');
